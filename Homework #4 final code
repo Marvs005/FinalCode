@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Employee2 {
+    private String fullname;
+    private int age;
+    private String position;
+
+    public Employee2(String name, int age, String position) {
+        this.fullname = name;
+        this.age = age;
+        this.position = position;
+    }
+
+    public String getName() {
+        return fullname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+	public String getPosition() {
+		return position;
+	}
+}
+
+public class employeeRecordsViewer {
+    private List<ArrayList<Object> employeeRecords;
+
+    public employeeRecordsViewer() {
+        employeeRecords = new ArrayList<Object>();
+    }
+
+    public void addEmployee(Employee2 employee) {
+        employeeRecords.add(employee);
+    }
+
+    public void viewEmployeeRecords() {
+        System.out.println("Employee Records:");
+
+        for (Object employee : employeeRecords) {
+            System.out.println("Name: " + ((Employee2) employee).getName());
+            System.out.println("Age: " + ((Employee2) employee).getAge());
+            System.out.println("position: " + ((Employee2) employee).getPosition());
+            System.out.println("MotorPH Employee Records Viewer");
+        }
+    }
+
+    public static void main(String[] args) {
+        employeeRecordsViewer viewer = new employeeRecordsViewer();
+
+        // Add employee records
+        Employee2 employee1 = new Employee2("Employee Name", 30, "Employee position");
+        Employee2 employee2 = new Employee2("Employee Name", 20, "Employee position");
+        Employee2 employee3 = new Employee2("Employee Name", 40, "Employee position");
+
+        viewer.addEmployee(employee1);
+        viewer.addEmployee(employee2);
+        viewer.addEmployee(employee3);
+
+        // View employee records
+        viewer.viewEmployeeRecords();
+    }
+}
+
