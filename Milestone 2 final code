@@ -1,0 +1,65 @@
+import java.time.LocalDate;
+
+
+interface LeaveApplication {
+    void applyLeave(int days);
+    int calculateLeaveBalance();
+}
+
+class Employee implements LeaveApplication {
+    private String name;
+    private LocalDate hireDate;
+    private int annualLeaveBalance;
+
+    public Employee(String name, LocalDate hireDate, int annualLeaveBalance) {
+        this.name = name;
+        this.hireDate = hireDate;
+        this.annualLeaveBalance = annualLeaveBalance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public int getAnnualLeaveBalance() {
+        return annualLeaveBalance;
+    }
+
+  
+    public void applyLeave(int days) {
+        if (days <= annualLeaveBalance) {
+            annualLeaveBalance -= days;
+            System.out.println("Leave application approved for " + days + " days.");
+        } else {
+            System.out.println("Insufficient leave balance.");
+        }
+    }
+
+   
+    public int calculateLeaveBalance() {
+        LocalDate currentDate = LocalDate.now();
+        long monthsWorked = java.time.temporal.ChronoUnit.MONTHS.between(hireDate, currentDate);
+        int earnedLeave = (int) (monthsWorked / 12) * 0; 
+        return annualLeaveBalance + earnedLeave;
+    }
+}
+
+public class LeaveApplication{
+    public static void main(String[] args) {
+        LocalDate hireDate = LocalDate.of(2023, 1, 1);
+        LeaveApplication employee = new Employee("Employee Name", hireDate, 10);
+        System.out.println("Employee: " + employee.getName());
+        System.out.println("Hire Date: " + employee.getHireDate());
+        System.out.println("Annual Leave Balance: " + employee.getAnnualLeaveBalance());
+
+        employee.applyLeave(5);
+        System.out.println("Current Leave Balance: " + employee.calculateLeaveBalance());
+
+        employee.applyLeave(8); // Trying to apply more leave than available
+        System.out.println("Current Leave Balance: " + employee.calculateLeaveBalance());
+    }
+}
