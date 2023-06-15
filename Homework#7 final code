@@ -1,0 +1,58 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Employee {
+    private String username;
+    private String password;
+
+    public Employee(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+}
+
+public class EmployeeLoginApplication {
+    private Map<String, Employee> employeeMap;
+
+    public EmployeeLoginApplication() {
+        employeeMap = new HashMap<String, Employee>();
+        // Add sample employee records
+        employeeMap.put("Username", new Employee("Username", "password123"));
+        employeeMap.put("Username", new Employee("Username", "secure456"));
+        employeeMap.put("admin", new Employee("admin", "admin123"));
+    }
+
+    public void login() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        Employee employee = employeeMap.get(username.toLowerCase());
+
+        if (employee != null && employee.getPassword().equals(password)) {
+            System.out.println("Login successful!");
+            System.out.println("Welcome, " + employee.getUsername() + "!");
+        } else {
+            System.out.println("Invalid username or password.");
+        }
+    }
+
+    public static void main(String[] args) {
+        EmployeeLoginApplication loginApp = new EmployeeLoginApplication();
+        loginApp.login();
+    }
+}
+
