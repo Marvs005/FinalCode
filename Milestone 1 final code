@@ -1,0 +1,419 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import javax.swing.event.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.IOException;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+
+
+public class EmployeeApplicationGUI extends JPanel {
+	private static final long serialVersionUID = 1L;
+	private static JButton EnterButton;
+	 private static JTextArea jcomp2; //This is where you enter the Employee Number
+	 private JLabel EmpNumTitle;
+	 private static JTextArea LNBox;
+	 private static JTextArea BirthdateBox;
+	 private JLabel EmpDetail;
+	 private static JTextField AddressBox;
+	 private JLabel LNTitle;
+	 private JLabel BirthdateTitle;
+	 private JLabel AddressTitle;
+	 private static JTextField FNBox;
+	 private static JTextField PNBox;
+	 private static JTextField PositionBox;
+	 private JLabel FNTitle;
+	 private JLabel PNTitle;
+	 private static JTextField StatusBox;
+	 private static JTextField SuperBox;
+	 private static JTextField SSSBox;
+	 private JLabel PositionTitle;
+	 private JLabel StatusTitle;
+	 private JLabel SuperTitle;
+	 private static JTextField PHHBox;
+	 private static JTextField PIBox;
+	 private JLabel SSSTitle;
+	 private JLabel PHHTitle;
+	 private JLabel PITitle;
+	 private static JTextField TINBox;
+	 private JLabel TinTitle;
+	 private JLabel AdditonalTitle;
+	 private static JTextField jcomp30;
+	 private JLabel SalaryDetail;
+	 private JLabel MonthTitle;
+	 private static JTextField MonthDisplayBox;
+	 private static JTextField YearDisplayBox;
+	 private JLabel YearTitle;
+	 private JLabel HRTitle;
+	 private static JTextField HRBox;
+	 private static JTextField week1gross;
+	 private JLabel WeekTitle;
+	 private static JTextField week2gross;
+	 private static JTextField week1netpay;
+	 private static JTextField week2netpay;
+	 private static JTextField week3gross;
+	 private static JTextField week4gross;
+	 private static JTextField week3netpay;
+	 private static JTextField week4netpay;
+	 private JLabel Gross1;
+	 private JLabel Netpay1;
+	 private JLabel Week1;
+	 private JLabel Week2;
+	 private JLabel Week3;
+	 private JLabel Week4;
+	 private JLabel MonthlyTitle;
+	 private static JTextField monthlygross;
+	 private static JTextField monthlynetpay;
+	 private JLabel Gross2;
+	 private JLabel Netpay2;
+
+	 public EmployeeApplicationGUI () {
+	 //construct components
+	 EnterButton = new JButton("Enter");
+	 jcomp2 = new JTextArea(5, 5);
+	 EmpNumTitle = new JLabel("Employee Number:");
+	 LNBox = new JTextArea(5, 5);
+	 BirthdateBox = new JTextArea(5, 5);
+	 EmpDetail = new JLabel("Employee Details");
+	 AddressBox = new JTextField(5);
+	 LNTitle = new JLabel("Last Name:");
+	 BirthdateTitle = new JLabel("Birthdate:");
+	 AddressTitle = new JLabel("Address:");
+	 FNBox = new JTextField(5);
+	 PNBox = new JTextField(5);
+	 PositionBox = new JTextField(5);
+	 FNTitle = new JLabel("First Name:");
+	 PNTitle = new JLabel("Phone Number:");
+	 StatusBox = new JTextField(5);
+	 SuperBox = new JTextField(5);
+	 SSSBox = new JTextField(5);
+	 PositionTitle = new JLabel("Position:");
+	 StatusTitle = new JLabel("Status:");
+	 SuperTitle = new JLabel("Supervisor:");
+	 PHHBox = new JTextField(5);
+	 PIBox = new JTextField(5);
+	 SSSTitle = new JLabel("SSS Number:");
+	 PHHTitle = new JLabel("Phil Health:");
+	 PITitle = new JLabel("Pag Ibig:");
+	 TINBox = new JTextField(5);
+	 TinTitle = new JLabel("TIN:");
+	 AdditonalTitle = new JLabel("Additional Info:");
+	 jcomp30 = new JTextField(5);
+	 SalaryDetail = new JLabel("Salary Details:");
+	 MonthTitle = new JLabel("Month:");
+	 MonthDisplayBox = new JTextField(5);
+	 YearDisplayBox = new JTextField(5);
+	 YearTitle = new JLabel("Year:");
+	 HRTitle = new JLabel("Hourly Rate:");
+	 HRBox = new JTextField(5);
+	 week1gross = new JTextField(5);
+	 WeekTitle = new JLabel("Weekly Computation of the Month:");
+	 week2gross = new JTextField(5);
+	 week1netpay = new JTextField(5);
+	 week2netpay = new JTextField(5);
+	 week3gross = new JTextField(5);
+	 week4gross = new JTextField(5);
+	 week3netpay = new JTextField(5);
+	 week4netpay = new JTextField(5);
+	 Gross1 = new JLabel("Gross:");
+	 Netpay1 = new JLabel("NetPay:");
+	 Week1 = new JLabel("Week 1:");
+	 Week2 = new JLabel("Week 2:");
+	 Week3 = new JLabel("Week 3:");
+	 Week4 = new JLabel("Week 4:");
+	 MonthlyTitle = new JLabel("Monthly Computation:");
+	 monthlygross = new JTextField(5);
+	 monthlynetpay = new JTextField(5);
+	 Gross2 = new JLabel("Gross:");
+	 Netpay2 = new JLabel("NetPay:");
+
+	 //adjust size and set layout
+	 setPreferredSize(new Dimension(944, 571));
+	 setLayout(null);
+
+	 //add components
+	 add(EnterButton);
+	 add(jcomp2);
+	 add(EmpNumTitle);
+	 add(LNBox);
+	 add(BirthdateBox);
+	 add(EmpDetail);
+	 add(AddressBox);
+	 add(LNTitle);
+	 add(BirthdateTitle);
+	 add(AddressTitle);
+	 add(FNBox);
+	 add(PNBox);
+	 add(PositionBox);
+	 add(FNTitle);
+	 add(PNTitle);
+	 add(StatusBox);
+	 add(SuperBox);
+	 add(SSSBox);
+	 add(PositionTitle);
+	 add(StatusTitle);
+	 add(SuperTitle);
+	 add(PHHBox);
+	 add(PIBox);
+	 add(SSSTitle);
+	 add(PHHTitle);
+	 add(PITitle);
+	 add(TINBox);
+	 add(TinTitle);
+	 add(AdditonalTitle);
+	 add(jcomp30);
+	 add(SalaryDetail);
+	 add(MonthTitle);
+	 add(MonthDisplayBox);
+	 add(YearDisplayBox);
+	 add(YearTitle);
+	 add(HRTitle);
+	 add(HRBox);
+	 add(week1gross);
+	 add(WeekTitle);
+	 add(week2gross);
+	 add(week1netpay);
+	 add(week2netpay);
+	 add(week3gross);
+	 add(week4gross);
+	 add(week3netpay);
+	 add(week4netpay);
+	 add(Gross1);
+	 add(Netpay1);
+	 add(Week1);
+	 add(Week2);
+	 add(Week3);
+	 add(Week4);
+	 add(MonthlyTitle);
+	 add(monthlygross);
+	 add(monthlynetpay);
+	 add(Gross2);
+	 add(Netpay2);
+
+	 //Accurate Positioning
+	 EnterButton.setBounds(10, 535, 120, 30);
+	 jcomp2.setBounds(10, 495, 120, 35);
+	 EmpNumTitle.setBounds(10, 475, 120, 15);
+	 LNBox.setBounds(15, 80, 130, 25);
+	 BirthdateBox.setBounds(15, 130, 130, 25);
+	 EmpDetail.setBounds(15, 0, 100, 50);
+	 AddressBox.setBounds(15, 175, 280, 35);
+	 LNTitle.setBounds(15, 60, 120, 15);
+	 BirthdateTitle.setBounds(15, 110, 120, 15);
+	 AddressTitle.setBounds(15, 160, 120, 15);
+	 FNBox.setBounds(185, 80, 130, 25);
+	 PNBox.setBounds(185, 130, 130, 25);
+	 PositionBox.setBounds(15, 235, 130, 25);
+	 FNTitle.setBounds(185, 60, 120, 15);
+	 PNTitle.setBounds(185, 110, 120, 15);
+	 StatusBox.setBounds(185, 235, 130, 25);
+	 SuperBox.setBounds(15, 285, 130, 25);
+	 SSSBox.setBounds(15, 335, 130, 25);
+	 PositionTitle.setBounds(15, 215, 120, 15);
+	 StatusTitle.setBounds(185, 215, 120, 15);
+	 SuperTitle.setBounds(15, 265, 120, 15);
+	 PHHBox.setBounds(15, 385, 130, 25);
+	 PIBox.setBounds(15, 435, 130, 25);
+	 SSSTitle.setBounds(15, 315, 120, 15);
+	 PHHTitle.setBounds(15, 365, 120, 15);
+	 PITitle.setBounds(15, 415, 120, 15);
+	 TINBox.setBounds(185, 285, 130, 25);
+	 TinTitle.setBounds(185, 265, 120, 15);
+	 AdditonalTitle.setBounds(185, 325, 120, 15);
+	 jcomp30.setBounds(185, 345, 140, 110);
+	 SalaryDetail.setBounds(505, 15, 100, 25);
+	 MonthTitle.setBounds(505, 60, 120, 25);
+	 MonthDisplayBox.setBounds(505, 85, 120, 25);
+	 YearDisplayBox.setBounds(690, 85, 120, 25);
+	 YearTitle.setBounds(690, 65, 120, 15);
+	 HRTitle.setBounds(505, 125, 120, 15);
+	 HRBox.setBounds(505, 145, 120, 25);
+	 week1gross.setBounds(505, 245, 120, 25);
+	 WeekTitle.setBounds(570, 180, 200, 15);
+	 week2gross.setBounds(505, 290, 120, 25);
+	 week1netpay.setBounds(690, 245, 120, 25);
+	 week2netpay.setBounds(690, 290, 120, 25);
+	 week3gross.setBounds(505, 335, 120, 25);
+	 week4gross.setBounds(505, 380, 120, 25);
+	 week3netpay.setBounds(690, 335, 120, 25);
+	 week4netpay.setBounds(690, 380, 120, 25);
+	 Gross1.setBounds(505, 200, 120, 15);
+	 Netpay1.setBounds(765, 200, 120, 15);
+	 Week1.setBounds(445, 250, 100, 15);
+	 Week2.setBounds(445, 295, 100, 15);
+	 Week3.setBounds(445, 340, 100, 15);
+	 Week4.setBounds(445, 385, 100, 15);
+	 MonthlyTitle.setBounds(595, 425, 140, 25);
+	 monthlygross.setBounds(505, 470, 120, 25);
+	 monthlynetpay.setBounds(690, 470, 120, 25);
+	 Gross2.setBounds(505, 450, 100, 15);
+	 Netpay2.setBounds(690, 450, 100, 15);
+	 }
+
+
+	 public static void main(String[] args) throws IOException {
+	 JFrame frame = new JFrame("EmployeeApplication");
+	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 frame.getContentPane().add(new MyPanel());
+	 frame.pack();
+	 frame.setVisible(true);
+
+
+	 // Button Functions
+	 EnterButton.addActionListener(new ActionListener() {
+	 public void actionPerformed(ActionEvent e) {
+	 String inputnum = jcomp2.getText();
+	 String inputmo = MonthDisplayBox.getText();
+	 // Attributes
+	 Employee emp = new Employee();
+	 
+	 ArrayList<Attendance> employeeAttendances = new ArrayList<Attendance>();
+
+	 BufferedReader reader2 = null;
+	 try {
+	 reader2 = new BufferedReader(new FileReader("./Attendance.csv"));
+	 } catch (FileNotFoundException ex) {
+	 throw new RuntimeException(ex);
+	 }
+	 //Filereader Attendance.csv
+	 try {
+	 int inputmonth = Integer.parseInt(inputmo);
+	 String row2 = ",";
+	 reader2.readLine(); // Read the first line as that is the header of the CSV file
+	 while ((row2 = reader2.readLine()) != null) { //second file reader for attendance.csv
+	 String[] AttData = row2.split(",");
+	 System.out.println(row2);
+	 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+	 LocalDate currentDate = LocalDate.parse(AttData[3], dateTimeFormatter);
+	 if (currentDate.getMonth() == Month.of(inputmonth) && inputnum.equals(AttData[0])) {
+	
+	 Attendance atten = new Attendance();
+
+	 atten.setEmpN(AttData[0]);
+	 atten.setLN(AttData[1]);
+	 atten.setLN(AttData[2]);
+	 atten.setMonthdate(AttData[3]);
+	 atten.setTimeIn(AttData[4]);
+	 atten.setTimeOut(AttData[5]);
+
+	 employeeAttendances.add(atten);
+	 }
+	
+	 int totalHoursWorked = 0;
+
+	 for (int index = 0; index < employeeAttendances.size(); index++) {
+	
+	 Attendance currentEmployeeAttendance = employeeAttendances.get(index);
+
+	 totalHoursWorked += currentEmployeeAttendance.getHoursWorked();
+	 }
+
+	
+	 emp.setHoursWorked(totalHoursWorked);
+
+	 
+	 int firstWeekHours = 0;
+
+	 
+	 for (int dayIndex = 0; dayIndex < 7; dayIndex++) {
+	 
+	 firstWeekHours += employeeAttendances.get(dayIndex).getHoursWorked();
+	 }
+
+	 System.out.println("The total hours worked for the first week is " + firstWeekHours);
+	 } catch (IOException ex) {
+	 throw new RuntimeException(ex);
+	 }
+	 catch (ParseException a) {
+	 // Handle the exception
+	 a.printStackTrace();
+	 }
+	 BufferedReader reader = null;
+	 try {
+	 reader = new BufferedReader(new FileReader("./EmpData.csv"));
+	 } catch (FileNotFoundException ex1) {
+	 throw new RuntimeException(ex1);
+	 }
+	 // File reader Employee.csv
+	 try {
+	 int inputmonth = Integer.parseInt(inputmo);
+	 String headerline = reader.readLine();
+	 System.out.println(headerline);
+	 String row = ",";
+	 while ((row = reader.readLine()) != null) {
+	 String[] EmpData = row.split(",");
+	 if (EmpData[0].equals(inputnum)) {
+	 emp.EmpNum = EmpData[0];
+	 emp.LastName = EmpData[1];
+	 emp.FirstName = EmpData[2];
+	 emp.Birth = EmpData[3];
+	 emp.Address = EmpData[4];
+	 emp.PhoneNum = EmpData[5];
+	 emp.SSS = EmpData[6];
+	 emp.PhilHealth = EmpData[7];
+	 emp.TIN = EmpData[8];
+	 emp.Pagibig = EmpData[9];
+	 emp.Status = EmpData[10];
+	 emp.Position = EmpData[11];
+	 emp.Supervisor = EmpData[12];
+	 // emp.BasicSalary = Double.parseDouble(EmpData[13]);
+	 emp.Rice = Float.parseFloat(EmpData[14]);
+	 emp.PhoneMoney = Float.parseFloat(EmpData[15]);
+	 emp.Clothes = Float.parseFloat(EmpData[16]);
+	 emp.MonthlyRate = Float.parseFloat(EmpData[17]);
+	// emp.HourlyRate = Double.parseDouble(EmpData[18]);
+	 emp.setHourlyRate(Double.parseDouble((EmpData[18])));
+	 emp.setBasicSalary(Double.parseDouble(EmpData[13]));
+
+
+	 //Enter here text display button for the left side
+	 LNBox.setText(emp.LastName);
+	 FNBox.setText(emp.FirstName);
+	 BirthdateBox.setText(emp.Birth);
+	 PNBox.setText(emp.PhoneNum);
+	 AddressBox.setText(emp.Address);
+	 PositionBox.setText(emp.Position);
+	 StatusBox.setText(emp.Status);
+	 SuperBox.setText(emp.Supervisor);
+	 TINBox.setText(emp.TIN);
+	 SSSBox.setText(emp.SSS);
+	 PHHBox.setText(emp.PhilHealth);
+	 PIBox.setText(emp.Pagibig);
+
+
+
+
+
+
+	 }
+	 }
+	 } catch (IOException ex2) {
+	 throw new RuntimeException(ex2);
+	 }
+
+
+	 //Salary
+
+	 
+	 String HourlyRates = Double.toString(emp.HourlyRate);
+	 String MonthNetPayOverall = Double.toString(emp.finalsalary());
+	 String MonthNetGrossPayOverall = Double.toString(emp.getStaticsalary());
+	 // Enter display here for the right side
+	 HRBox.setText(HourlyRates);
+	 monthlygross.setText(MonthNetGrossPayOverall);
+	 monthlynetpay.setText(MonthNetPayOverall);
+
+	 }
+   });	 
+)
