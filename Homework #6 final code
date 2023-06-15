@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class EmployeeLogInApplication {
+	public static void main(String[] args) {
+        // Employee credentials
+        String username = "name of employee";
+        String password = "password006";
+
+        
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user for username and password
+        System.out.print("Username: ");
+        String inputUsername = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String inputPassword = scanner.nextLine();
+
+        // Check if the entered username and password are correct
+        if (inputUsername.equals(username) && inputPassword.equals(password)) {
+            System.out.println("Login successful. Welcome MotorPH employee, " + username + "!");
+
+
+        } else {
+            System.out.println("Invalid username or password. Please try again.");
+            // Handle incorrect login attempt
+        }
+
+        // Close the Scanner
+        scanner.close();
+    }
+}
+
+}
